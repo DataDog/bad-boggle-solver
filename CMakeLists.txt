@@ -20,6 +20,12 @@ endif()
 
 add_compile_options(-Werror=sign-compare)
 add_compile_options(-fPIC)
+add_compile_options(-g)
+
+if(NOT APPLE)
+  find_program(CMAKE_OBJCOPY NAMES objcopy)
+  find_program(CMAKE_STRIP NAMES strip)
+endif()
 
 # Make data accessible in build
 add_custom_target(copy-data-files ALL
